@@ -18,12 +18,12 @@ from rest_framework import generics, mixins
 #         return Response(status_serializer.data)
 
 
-class StatusListCreateView(mixins.CreateModelMixin, generics.ListAPIView):
+class StatusListCreateView(generics.ListCreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+    # def post(self, request, *args, **kwargs):
+    #     return self.create(request, *args, **kwargs)
 
 
 # class StatusListAPIView(generics.ListAPIView):
@@ -36,7 +36,7 @@ class StatusListCreateView(mixins.CreateModelMixin, generics.ListAPIView):
 #     serializer_class = StatusSerializer
 
 
-class StatusDetailAPIView(mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.RetrieveAPIView):
+class StatusDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     lookup_field = "id"
@@ -47,14 +47,14 @@ class StatusDetailAPIView(mixins.UpdateModelMixin, mixins.DestroyModelMixin, gen
 
     #     return Status.objects.get(id=kw_id)
 
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
+    # def put(self, request, *args, **kwargs):
+    #     return self.update(request, *args, **kwargs)
 
-    def patch(self, request, *args, **kwargs):
-        return self.partial_update(request, *args, **kwargs)
+    # def patch(self, request, *args, **kwargs):
+    #     return self.partial_update(request, *args, **kwargs)
 
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+    # def delete(self, request, *args, **kwargs):
+    #     return self.destroy(request, *args, **kwargs)
 
 
 # class StatusUpdateAPIView(generics.UpdateAPIView):
