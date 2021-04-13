@@ -3,4 +3,12 @@ from .models import Status
 
 # Register your models here.
 
-admin.site.register(Status)
+
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ['user', 'content', 'image']
+
+    class Meta:
+        model = Status
+
+
+admin.site.register(Status, StatusAdmin)
