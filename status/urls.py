@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import StatusAPIView, StatusListAPIView
+from status import views
 
 urlpatterns = [
-    path('status/', StatusAPIView.as_view()),
-    path('list/', StatusListAPIView.as_view()),
+    path('status/', views.StatusAPIView.as_view()),
+    path('status/list/', views.StatusListAPIView.as_view()),
+    path('status/create/', views.StatusCreateAPIView.as_view()),
 ]
