@@ -6,6 +6,9 @@ from rest_framework.response import Response
 
 from rest_framework import generics, mixins
 
+# Parsers
+from rest_framework import parsers
+
 # Create your views here.
 
 
@@ -21,6 +24,7 @@ from rest_framework import generics, mixins
 class StatusListCreateView(generics.ListCreateAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
+    parser_classes = [parsers.FormParser, parsers.MultiPartParser]
 
     # def post(self, request, *args, **kwargs):
     #     return self.create(request, *args, **kwargs)
@@ -36,10 +40,16 @@ class StatusListCreateView(generics.ListCreateAPIView):
 #     serializer_class = StatusSerializer
 
 
-class StatusDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class StatusDetailUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     lookup_field = "id"
+    parser_classes = [parsers.FormParser, parsers.MultiPartParser]
+
+# class StatusDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Status.objects.all()
+#     serializer_class = StatusSerializer
+#     lookup_field = "id"
 
     # def get_object(self, *args, **kwargs):
     #     kwargs = self.kwargs

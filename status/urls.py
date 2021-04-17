@@ -8,7 +8,8 @@ from status import views
 urlpatterns = [
     # path('status/', views.StatusAPIView.as_view()),
     path('status/', views.StatusListCreateView.as_view()),
-    path('status/<id>/', views.StatusDetailAPIView.as_view()),
+    path('status/<id>/', views.StatusDetailUpdateDeleteView.as_view()),
+    # path('status/<id>/', views.StatusDetailAPIView.as_view()),
     # path('status/list/', views.StatusListAPIView.as_view()),
     # path('status/create/', views.StatusCreateAPIView.as_view()),
     # path('status/detail/<id>/', views.StatusDetailAPIView.as_view()),
